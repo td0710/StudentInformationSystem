@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "PzPtR2wrPm1ikWRXAzvpxDfHTXBYajH5ejiD5uVXt5TFKSfAn8oZcoYSUgI6uha7SOb1b1XppBz9x/bl4QH2XA==",
+  "dgSpecHash": "io2IaQHhWlI=",
   "success": true,
   "projectFilePath": "D:\\StudentInformationSystem\\StudentInformationSystem.Services\\StudentInformationSystem.Services.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512"
+  ],
   "logs": []
 }
