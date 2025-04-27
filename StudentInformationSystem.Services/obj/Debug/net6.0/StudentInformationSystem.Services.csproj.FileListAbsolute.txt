@@ -1,0 +1,16 @@
+D:\StudentInformationSystem\StudentInformationSystem.Services\bin\Debug\net6.0\StudentInformationSystem.Services.deps.json
+D:\StudentInformationSystem\StudentInformationSystem.Services\bin\Debug\net6.0\StudentInformationSystem.Services.dll
+D:\StudentInformationSystem\StudentInformationSystem.Services\bin\Debug\net6.0\StudentInformationSystem.Services.pdb
+D:\StudentInformationSystem\StudentInformationSystem.Services\bin\Debug\net6.0\StudentInformationSystem.Data.dll
+D:\StudentInformationSystem\StudentInformationSystem.Services\bin\Debug\net6.0\StudentInformationSystem.Data.pdb
+D:\StudentInformationSystem\StudentInformationSystem.Services\obj\Debug\net6.0\StudentInformationSystem.Services.csproj.AssemblyReference.cache
+D:\StudentInformationSystem\StudentInformationSystem.Services\obj\Debug\net6.0\StudentInformationSystem.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\StudentInformationSystem\StudentInformationSystem.Services\obj\Debug\net6.0\StudentInformationSystem.Services.AssemblyInfoInputs.cache
+D:\StudentInformationSystem\StudentInformationSystem.Services\obj\Debug\net6.0\StudentInformationSystem.Services.AssemblyInfo.cs
+D:\StudentInformationSystem\StudentInformationSystem.Services\obj\Debug\net6.0\StudentInformationSystem.Services.csproj.CoreCompileInputs.cache
+D:\StudentInformationSystem\StudentInformationSystem.Services\obj\Debug\net6.0\StudentInformationSystem.Services.sourcelink.json
+D:\StudentInformationSystem\StudentInformationSystem.Services\obj\Debug\net6.0\StudentI.7C8E5A2A.Up2Date
+D:\StudentInformationSystem\StudentInformationSystem.Services\obj\Debug\net6.0\StudentInformationSystem.Services.dll
+D:\StudentInformationSystem\StudentInformationSystem.Services\obj\Debug\net6.0\refint\StudentInformationSystem.Services.dll
+D:\StudentInformationSystem\StudentInformationSystem.Services\obj\Debug\net6.0\StudentInformationSystem.Services.pdb
+D:\StudentInformationSystem\StudentInformationSystem.Services\obj\Debug\net6.0\ref\StudentInformationSystem.Services.dll

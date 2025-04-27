@@ -1,0 +1,15 @@
+D:\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\net6.0\StudentInformationSystem.Data.deps.json
+D:\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\net6.0\StudentInformationSystem.Data.dll
+D:\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\net6.0\StudentInformationSystem.Data.pdb
+D:\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\net6.0\StudentInformationSystem.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\net6.0\StudentInformationSystem.Data.AssemblyInfoInputs.cache
+D:\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\net6.0\StudentInformationSystem.Data.AssemblyInfo.cs
+D:\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\net6.0\StudentInformationSystem.Data.csproj.CoreCompileInputs.cache
+D:\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\net6.0\StudentInformationSystem.Data.sourcelink.json
+D:\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\net6.0\StudentInformationSystem.Data.dll
+D:\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\net6.0\refint\StudentInformationSystem.Data.dll
+D:\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\net6.0\StudentInformationSystem.Data.pdb
+D:\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\net6.0\ref\StudentInformationSystem.Data.dll
+D:\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\net6.0\StudentInformationSystem.Data.runtimeconfig.json
+D:\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\net6.0\StudentInformationSystem.Data.csproj.AssemblyReference.cache
+D:\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\net6.0\StudentInformationSystem.Data.genruntimeconfig.cache
