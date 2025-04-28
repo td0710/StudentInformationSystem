@@ -30,6 +30,8 @@ builder.Services.AddDbContext<ThongTinSinhVienDataContext>(options =>
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IThongTinCaNhanService, ThongTinCaNhanService>(); 
+builder.Services.AddScoped<ITuyenXeBuytService, TuyenXeBuytService>(); 
+builder.Services.AddScoped<IVeXeBuytService, VeXeBuytService>(); 
 var app = builder.Build();
 app.UseCors(x => x
     .AllowAnyMethod()

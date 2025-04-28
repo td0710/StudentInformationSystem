@@ -2,17 +2,11 @@
 import {
     Box,
     Grid,
-    Stack,
     Typography,
-    Drawer,
-    List,
-    ListItem,
-    ListItemText,
     Divider,
     Button,
     TextField
 } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import dayjs from 'dayjs';
 import {Radio, RadioGroup, FormControlLabel, FormControl} from '@mui/material';
@@ -21,15 +15,16 @@ import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import axios from "axios";
 import ThongTinCaNhanModel from '../../models/ThongTinCaNhanModel';
+import {Sidebar} from "../Layout/Sidebar";
 
 export const ThongTinCaNhan = () => {
-    const drawerWidth = 240;
-    const navigate = useNavigate();
     const [ThongTinCaNhan, setThongTinCaNhan] = useState(new ThongTinCaNhanModel());
-    
+    const menuItems = [
+        { text: 'Trở lại', route:"/"}
+    ];
     useEffect(() => {
         const fetchThongTinCaNhan = async () => {
-            const url = `https://localhost:7045/api/thongtincanhan/get-by-code?code=ACF8C590-ED0B-415C-83AD-33761F938F65`
+            const url = `${process.env.REACT_APP_API_URL}/api/thongtincanhan/get-by-code?code=ACF8C590-ED0B-415C-83AD-33761F938F65`
             const response = await axios.get(url);
             
             console.log(response);
@@ -41,7 +36,7 @@ export const ThongTinCaNhan = () => {
     },[])
     const updateThongTinCaNhan = async () => {
         try {
-            const url = `https://localhost:7045/api/thongtincanhan/update`
+            const url = `${process.env.REACT_APP_API_URL}/api/thongtincanhan/update`
             const response = await axios.put(url, ThongTinCaNhan);
             console.log(response);
             if (response.status === 200) {
@@ -71,37 +66,7 @@ export const ThongTinCaNhan = () => {
     return (
         <Box sx={{display: 'flex'}}>
             {/* Sidebar */}
-            <Drawer
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
-                        width: drawerWidth,
-                        height: '100%',
-                        boxSizing: 'border-box',
-                        position: 'relative',
-                    },
-                }}
-                variant="permanent"
-                open
-            >
-                <List sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                    {['Thông tin sinh viên', 'Trở lại'].map((text, index) => (
-                        <Button
-                            key={index}
-                            variant="text"
-                            sx={{ display: 'flex', justifyContent: 'flex-start', padding: 2 }}
-                            onClick={() => {
-                                if (text === 'Trở lại') {
-                                    navigate('/'); 
-                                }
-                            }}
-                        >
-                            {text}
-                        </Button>
-                    ))}
-                </List>
-            </Drawer>
+            <Sidebar menuItems={menuItems}></Sidebar>
 
             {/* Main Content */}
             <Box
@@ -156,35 +121,36 @@ export const ThongTinCaNhan = () => {
                     <Box sx={{padding: "20px"}}>
                         <Grid container spacing={3}>
                             <Grid item size={4}>
-                                <TextField label="Họ và tên *" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                <TextField label="Họ và tên" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
+                                           fullWidth
+                                            required
                                            value={ThongTinCaNhan.hoTen} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, hoTen: e.target.value })}/>
                             </Grid>
                             <Grid item size={4}>
-                                <TextField label="Mã sinh viên *" variant="outlined" size="small" InputLabelProps={{
+                                <TextField label="Mã sinh viên" variant="outlined" size="small" InputLabelProps={{
                                     shrink: ThongTinCaNhan.maSinhVien ? true : false, 
-                                }}          fullWidth
+                                }}          fullWidth required
                                            value={ThongTinCaNhan.maSinhVien} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, maSinhVien: e.target.value })}/>
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Khóa" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.khoa} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, khoa: e.target.value })}
 />
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Dân tộc" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.danToc} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, danToc: e.target.value })}
 />
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Tôn giáo" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.tonGiao} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, tonGiao: e.target.value })}
 />
@@ -230,10 +196,9 @@ export const ThongTinCaNhan = () => {
                             <Grid item size={4}>
                                 <TextField label="Nơi sinh (Chọn tỉnh/TP đúng theo giấy khai sinh)" variant="outlined"
                                            size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.noiSinh} // Gán giá trị từ state
-                                           onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, noiSinh: e.target.value })}
-/>
+                                           onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, noiSinh: e.target.value })}/>
                             </Grid>
                             <Grid item xs={4} sx={{height: '40px', display: 'flex', alignItems: 'center'}}>
                                 <FormControl>
@@ -268,21 +233,21 @@ export const ThongTinCaNhan = () => {
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Quê quán" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth requiredrequired
                                            value={ThongTinCaNhan.queQuan} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, queQuan: e.target.value })}
 />
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Số điện thoại sinh viên" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth requiredrequired
                                            value={ThongTinCaNhan.sdt} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, sdt: e.target.value })}
 />
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Email" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth requiredrequired
                                            value={ThongTinCaNhan.email} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, email: e.target.value })}
 />
@@ -294,42 +259,42 @@ export const ThongTinCaNhan = () => {
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Hộ khẩu tỉnh/thành phố" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth requiredrequired
                                            value={ThongTinCaNhan.hoKhauTP} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, hoKhauTP: e.target.value })}
 />
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Hộ khẩu quận/huyện" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth requiredrequired
                                            value={ThongTinCaNhan.hoKhauHuyen} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, hoKhauHuyen: e.target.value })}
 />
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Hộ khẩu xã/phường" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth requiredrequired
                                            value={ThongTinCaNhan.hoKhauXa} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, hoKhauXa: e.target.value })}
 />
                             </Grid>
                             <Grid item size={12}>
                                 <TextField label="Địa chỉ báo tin" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth requiredrequired
                                            value={ThongTinCaNhan.diaChiBaoTin} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, diaChiBaoTin: e.target.value })}
 />
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Số điện thoại gia đình" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.sdtGiaDinh} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, sdtGiaDinh: e.target.value })}
 />
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Lớp" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.lop} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, lop: e.target.value })}
 />
@@ -337,21 +302,21 @@ export const ThongTinCaNhan = () => {
                             <Grid item size={4}>
                                 <TextField label="CMND/Thẻ căn cước của người giám hộ" variant="outlined" size="small"
                                            InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.cCCDGiamHo} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, cCCDGiamHo: e.target.value })}
 />
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Mã số BHYT" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.maBHYT} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, maBHYT: e.target.value })}
 />
                             </Grid>
                             <Grid item size={4}>
                                 <TextField label="Mã số BHXH" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.maBHXH} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, maBHXH: e.target.value })}
 />
@@ -378,35 +343,35 @@ export const ThongTinCaNhan = () => {
                         <Grid container spacing={2} sx={{padding:"20px"}}>
                             <Grid item size={12}>
                                 <TextField label="Họ tên Bố" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.tenBo} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, tenBo: e.target.value })}
 />
                             </Grid>
                             <Grid item size={12}>
                                 <TextField label="Năm sinh" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.namSinhBo} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, namSinhBo: e.target.value })}
 />
                             </Grid>
                             <Grid item size={12}>
                                 <TextField label="Nghề nghiệp, chức vụ" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.ngheNghiepBo} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, ngheNghiepBo: e.target.value })}
 />
                             </Grid>
                             <Grid item size={12}>
                                 <TextField label="Nơi làm việc" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.noiLamViecBo} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, noiLamViecBo: e.target.value })}
 />
                             </Grid>
                             <Grid item size={12}>
                                 <TextField label="Điện thoại" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.sDTBo} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, sDTBo: e.target.value })}
 />
@@ -430,35 +395,35 @@ export const ThongTinCaNhan = () => {
                         <Grid container spacing={2} sx={{padding:"20px"}}>
                             <Grid item size={12}>
                                 <TextField label="Họ tên Mẹ" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.tenMe} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, tenMe: e.target.value })}
 />
                             </Grid>
                             <Grid item size={12}>
                                 <TextField label="Năm sinh" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.namSinhMe} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, namSinhMe: e.target.value })}
 />
                             </Grid>
                             <Grid item size={12}>
                                 <TextField label="Nghề nghiệp, chức vụ" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.ngheNghiepMe} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, ngheNghiepMe: e.target.value })}
 />
                             </Grid>
                             <Grid item size={12}>
                                 <TextField label="Nơi làm việc" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.noiLamViecMe} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, noiLamViecMe: e.target.value })}
 />
                             </Grid>
                             <Grid item size={12}>
                                 <TextField label="Điện thoại" variant="outlined" size="small" InputLabelProps={{ shrink: ThongTinCaNhan.maSinhVien ? true : false }} 
-                                           fullWidth 
+                                           fullWidth required
                                            value={ThongTinCaNhan.sDTMe} // Gán giá trị từ state
                                            onChange={(e) => setThongTinCaNhan({ ...ThongTinCaNhan, sDTMe: e.target.value })}
 />

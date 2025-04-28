@@ -9,7 +9,8 @@ namespace StudentInformationSystem.Data
     public class ThongTinSinhVienDataContext : DbContext
     {
         public DbSet<ThongTinCaNhan> DanhSachThongTinCaNhan { get; set; }
-        
+        public DbSet<TuyenXeBuyt> DanhSachTuyenXeBuyt { get; set; }
+        public DbSet<VeXeBuyt> DanhSachVeXeBuyt { get; set; }
         public ThongTinSinhVienDataContext(DbContextOptions<ThongTinSinhVienDataContext> options) : base(options)
         {
         }

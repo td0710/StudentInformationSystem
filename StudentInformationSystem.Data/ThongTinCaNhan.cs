@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 
@@ -47,8 +46,5 @@ namespace StudentInformationSystem.Data
         public string? NoiLamViecMe { get; set; }
         [JsonPropertyName("sDTMe")]
         public string? SDTMe { get; set; }
-
-
-
     }
 }
