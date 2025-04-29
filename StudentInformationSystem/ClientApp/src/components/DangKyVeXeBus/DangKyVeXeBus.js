@@ -3,7 +3,7 @@ import { RadioGroup, FormControlLabel, Radio, Select, MenuItem, FormControl, Inp
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "../Layout/Sidebar";
 import TuyenXeBuyt from "../../models/TuyenXeBuytModel";
-import VeXeBuytModel from "../../models/VeXeBuytModel";
+import ThongTinVeXeBuytModel from "../../models/ThongTinVeXeBuytModel";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -39,7 +39,7 @@ export const DangKyVeXeBus = () => {
         const url = `${process.env.REACT_APP_API_URL}/api/vexebuyt/create`
         
         const loaiThe = selectedTuyen == "motTuyen" ? 1 : 2 ;
-        const veXeBuytModel = new VeXeBuytModel(
+        const veXeBuytModel = new ThongTinVeXeBuytModel(
             "223030609",         
             selectedImage,       
             loaiThe,                   
@@ -98,7 +98,6 @@ export const DangKyVeXeBus = () => {
 
                             />
                         </Box>
-
                         <div style={{ padding: 9 }}>
                             <FormControl>
                                 <Typography variant="subtitle1">Loại Tuyến <span style={{color:"red"}}>*</span></Typography>

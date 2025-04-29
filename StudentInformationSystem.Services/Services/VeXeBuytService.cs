@@ -46,14 +46,14 @@ public class VeXeBuytService : IVeXeBuytService
             {
                 Id = Guid.NewGuid(),
                 MaSinhVien = veXeBuytDto.maSinhVien,
-                LoaiThe = veXeBuytDto.loaiThe == 1 ? (VeXeBuyt.LoaiTheEnum.MotTuyen) : (VeXeBuyt.LoaiTheEnum.LienTuyen),
+                LoaiThe = veXeBuytDto.loaiThe == 1 ? VeXeBuyt.LoaiTheEnum.MotTuyen : VeXeBuyt.LoaiTheEnum.LienTuyen,
                 SDT = veXeBuytDto.SDT,
                 AnhThe = veXeBuytDto.anh,
                 NgayTao = DateTime.UtcNow,
                 TrangThai = VeXeBuyt.TrangThaiEnum.DangTiepNhan,
-                NgayNhan = null,
+                NgayNhan = DateTime.UtcNow.AddDays(2),  
                 NoiNhan = "Tầng 1 nhà T1.",
-                GhiChu = "",
+                GhiChu = "Đơn đăng ký đang được tiếp nhận.",
                 Huy = false
             };
             _context.Add(createVeXeBuyt);
