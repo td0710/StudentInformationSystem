@@ -16,7 +16,7 @@ export const DangKyVeXeBus = () => {
 
     const [listTuyen, setListTuyen] = useState([]);
     const [selectedTuyen, setSelectedTuyen] = useState("");
-    const [selectedTuyenId, setSelectedTuyenId] = useState(""); // Thêm state cho selectedTuyenId
+    const [selectedTuyenId, setSelectedTuyenId] = useState(""); 
     const [selectedImage, setSelectedImage] = useState(null);
     const [sdt,setSDT] = useState("") ; 
     async function base64ConversionForImages(e) {

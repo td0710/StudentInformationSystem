@@ -32,6 +32,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IThongTinCaNhanService, ThongTinCaNhanService>(); 
 builder.Services.AddScoped<ITuyenXeBuytService, TuyenXeBuytService>(); 
 builder.Services.AddScoped<IVeXeBuytService, VeXeBuytService>(); 
+builder.Services.AddScoped<ILoaiGiayXacNhanService, LoaiGiayXacNhanService>(); 
+builder.Services.AddScoped<IGiayXacNhanService, GiayXacNhanService>(); 
+
+
 var app = builder.Build();
 app.UseCors(x => x
     .AllowAnyMethod()

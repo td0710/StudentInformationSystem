@@ -2,6 +2,7 @@ import { Home } from "./components/Home";
 import {ThongTinCaNhan} from "./components/ThongTinCaNhan/ThongTinCaNhan";
 import {DangKyVeXeBus} from "./components/DangKyVeXeBus/DangKyVeXeBus";
 import {GiayDangKyXeBuyt} from "./components/DangKyVeXeBus/GiayDangKyXeBuyt";
+import {GiayXacNhanSinhVien} from "./components/GiayXacNhanSinhVien/GiayXacNhanSinhVien";
 const AppRoutes = [
   {
     index: true,
@@ -18,6 +19,10 @@ const AppRoutes = [
   {
     path: '/dich-vu-truc-tuyen/giay-dang-ky-xe-buyt',
     element: <GiayDangKyXeBuyt />
+  },
+  {
+    path: '/dich-vu-truc-tuyen/giay-xac-nhan-sinh-vien',
+    element: <GiayXacNhanSinhVien />
   },
 ];
 

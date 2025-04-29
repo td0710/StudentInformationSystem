@@ -16,18 +16,7 @@ export const GiayDangKyXeBuyt = () => {
         4: 'Đã tiếp nhận'
     };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const url = `${process.env.REACT_APP_API_URL}/api/vexebuyt/get-by-msv?maSinhVien=223030609`;
-            const response = await axios.get(url);
-            const danhSachGiayDangKy = response.data.data.map(item => new
-            VeXeBuytModel(item.ngayTao, item.trangThai, item.ngayNhan, item.noiNhan, item.ghiChu));
-            setListGiayDangKy(danhSachGiayDangKy);
-            console.log(response);
-        };
-        fetchData();
-    }, []);
-    console.log(listGiayDangKy);
+
 
     const menuItems = [
         { text: 'Đăng ký vé xe buýt', route: "/dich-vu-truc-tuyen/dang-ky-ve-xe-buyt" },
@@ -55,9 +44,9 @@ export const GiayDangKyXeBuyt = () => {
 
     const rows = listGiayDangKy.map((item, index) => ({
         id: index + 1,
-        ngayTao: item.ngayTao ? new Date(item.ngayTao).toLocaleDateString('vi-VN') : '',  // Định dạng ngày tháng theo định dạng 'dd/mm/yyyy'
+        ngayTao: item.ngayTao ? new Date(item.ngayTao).toLocaleDateString('vi-VN') : '', 
         trangThai: TrangThaiEnum[item.trangThai],
-        ngayNhan: item.ngayNhan ? new Date(item.ngayNhan).toLocaleDateString('vi-VN') : '',  // Định dạng ngày tháng theo định dạng 'dd/mm/yyyy'
+        ngayNhan: item.ngayNhan ? new Date(item.ngayNhan).toLocaleDateString('vi-VN') : '', 
         noiNhan: item.noiNhan,
         ghiChu: item.ghiChu,
     }));
@@ -65,6 +54,19 @@ export const GiayDangKyXeBuyt = () => {
 
 
     const paginationModel = { page: 0, pageSize: 5 };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const url = `${process.env.REACT_APP_API_URL}/api/vexebuyt/get-by-msv?maSinhVien=223030609`;
+            const response = await axios.get(url);
+            const danhSachGiayDangKy = response.data.data.map(item => new
+            VeXeBuytModel(item.ngayTao, item.trangThai, item.ngayNhan, item.noiNhan, item.ghiChu));
+            setListGiayDangKy(danhSachGiayDangKy);
+            console.log(response);
+        };
+        fetchData();
+    }, []);
+    console.log(listGiayDangKy);
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -115,12 +117,12 @@ export const GiayDangKyXeBuyt = () => {
                         marginTop:"20px"
                     }}>
                         <Typography>
-                            <strong>- Ngày hẹn trả kết quả được xác định cụ thể như sau: </strong>
-                            Trả kết quả sau tối thiểu 12h làm việc; vào chiều thứ 2, sáng thứ 4 và sáng thứ 6 hàng tuần.<br/>
-                            <strong>- Địa điểm nhận </strong>Tầng 1 nhà T1.<br/>
-                            <strong>- Khi đến nhận kết quả </strong>sinh viên phải nộp 02 ảnh thẻ 3x4 (đã rửa).
-                            <strong> Kết quả </strong>sẽ được lưu tại Phòng trong vòng 2 tuần kể từ ngày hẹn trả kết quả. <strong>Sau thời gian lưu, </strong>
-                            nếu sinh viên không đến lấy thì phải đăng ký lại.
+                            <strong>- NGÀY HẸN TRẢ KẾT QUẢ ĐƯỢC XÁC ĐỊNH CỤ THỂ NHƯ SAU: </strong>
+                            Trả kết quả sau tối thiểu 12h làm việc; vào chiều thứ 2, sáng thứ 4 và sáng thứ 6 hàng tuần.<br />
+                            <strong>- ĐỊA ĐIỂM NHẬN:</strong> Tầng 1 nhà T1.<br />
+                            <strong>- KHI ĐẾN NHẬN KẾT QUẢ:</strong> Sinh viên phải nộp 02 ảnh thẻ 3x4 (đã rửa).<br />
+                            <strong>- KẾT QUẢ:</strong> Sẽ được lưu tại Phòng trong vòng 2 tuần kể từ ngày hẹn trả kết quả.
+                            <strong>Sau thời gian lưu,</strong> nếu sinh viên không đến lấy thì phải đăng ký lại.
                         </Typography>
                     </Box>
                 </Box>

@@ -11,6 +11,9 @@ namespace StudentInformationSystem.Data
         public DbSet<ThongTinCaNhan> DanhSachThongTinCaNhan { get; set; }
         public DbSet<TuyenXeBuyt> DanhSachTuyenXeBuyt { get; set; }
         public DbSet<VeXeBuyt> DanhSachVeXeBuyt { get; set; }
+        public DbSet<LoaiGiayXacNhan> DanhSachLoaiGiayXacNhan { get; set; }
+        public DbSet<GiayXacNhan> DanhSachGiayXacNhan { get; set; }
+
         public ThongTinSinhVienDataContext(DbContextOptions<ThongTinSinhVienDataContext> options) : base(options)
         {
         }
